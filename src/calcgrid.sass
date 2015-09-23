@@ -1,19 +1,10 @@
-html 
-  box-sizing: border-box
-
-*, *:before, *:after 
-  box-sizing: inherit
-
-
-
 // ******************************
 //        GRID VARIABLES
 
 $generate-grid-classes: true !default
-$breakpoints: (xs:0, sm:568, md:768, lg:992, xl:1200)
+$breakpoints: (xs:0, sm:568, md:768, lg:992, xl:1200) !default
 $columns: 12 !default
-$gutter: 2.5rem !default
-
+$gutter: 1.5rem !default
 
 
 // ******************************
@@ -26,9 +17,21 @@ $gutter: 2.5rem !default
   @return $gutter*$gutters
 
 
-
 // ******************************
 //           MIXINS
+
+=col-list($size:null)
+  $col-list: null
+  @if $size
+    @for $i from 1 through $columns
+      $col-list: append($col-list, unquote("&-#{$size}-#{$i}"), comma)
+  @else
+    @for $i from 1 through $columns
+      $col-list: append($col-list, unquote("&-#{$i}"), comma)
+  
+  #{$col-list} 
+    float: left
+
 
 =clearfix
   &:after
@@ -60,7 +63,6 @@ $gutter: 2.5rem !default
   margin-left: calc(-#{99.99% * $cols / $columns} + #{$gutter/2})
 
 
-
 // ******************************
 //       GENERATE CLASSES
 
@@ -72,13 +74,15 @@ $gutter: 2.5rem !default
     +row
       
   [class^="col-"],[class*=" col-"]
-    float: left
     @include gutter
   
   .col
     @each $breakpoint, $viewport in $breakpoints
       $key: nth($breakpoint, 1)
       @if $key == xs
+        
+        +col-list
+          
         @for $i from 1 through $columns
           &-#{$i}
             width: col-width($i)
@@ -91,6 +95,8 @@ $gutter: 2.5rem !default
       
       @else
         @media (min-width:$viewport  / 16 * 1em)
+          +col-list($key)
+          
           @for $i from 1 through $columns
             &-#{$key}
               &-#{$i}
@@ -106,15 +112,14 @@ $gutter: 2.5rem !default
                 margin-left: calc(-#{99.99% * $i / $columns} + #{$gutter/2})
 
           
-// ******************************
-//             FLEX
+  // FLEX
 
-.row.row--flex
-  display: flex
-  flex: 0 1 auto
-  flex-direction: row
-  flex-wrap: wrap
-  
-  [class^="col-"],[class*=" col-"]
-    float: none
-    flex: 0 0 auto
+  .row.row--flex
+    display: flex
+    flex: 0 1 auto
+    flex-direction: row
+    flex-wrap: wrap
+
+    [class^="col-"],[class*=" col-"]
+      float: none
+      flex: 0 0 auto
