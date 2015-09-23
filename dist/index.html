@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>CSS Calc() Grid - margin both sides</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+
+    
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    
+<h2>Calc grid</h2>
+<div class="container"> 
+  <div class="row">
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+    <div class="col col-1">col-1</div>
+  </div><br/>
+  <div class="row">
+    <div class="col col-2">col-2</div>
+    <div class="col col-2">col-2</div>
+    <div class="col col-2">col-2</div>
+    <div class="col col-2">col-2</div>
+    <div class="col col-2">col-2</div>
+    <div class="col col-2">col-2</div>
+  </div><br/>
+  <div class="row">
+    <div class="col col-3">col-3</div>
+    <div class="col col-3">col-3</div>
+    <div class="col col-3">col-3</div>
+    <div class="col col-3">col-3</div>
+  </div><br/>
+  <div class="row">
+    <div class="col col-4">col-4</div>
+    <div class="col col-4">col-4</div>
+    <div class="col col-4">col-4</div>
+  </div><br/>
+  <div class="row">
+    <div class="col col-6">col-6</div>
+    <div class="col col-6">col-6</div>
+  </div><br/>
+  <div class="row">
+    <div class="col col-12">col-12</div>
+  </div><br/>
+</div>
+<h2>nest</h2>
+<div class="container">
+  <div class="row">
+    <div class="col col-6 col-sm-4">Col
+      <div class="row">
+        <div class="col col-6">col-6</div>
+        <div class="col col-6">col-6
+          <div class="row">
+            <div class="col col-6">col-6</div>
+            <div class="col col-6">col-6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-6 col-sm-8">Col</div>
+  </div>
+</div><br/>
+<h2>push and pull</h2>
+<div class="container">
+  <div class="row">
+    <div class="col col-4 col-push-4 col-lg-push-2">col-sm-4</div>
+    <div class="col2 col-2 col-push-2 col-lg-push-2">col-sm-2</div>
+  </div>
+</div><br/>
+<h1>Flexbox alternative</h1>
+<div class="container">
+  <div class="row row--flex">
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+    <div class="col-1">col-1</div>
+  </div>
+</div><br/>
+<div class="container">
+  <div class="row row--flex">
+    <div class="col-2">col-2</div>
+    <div class="col-2">col-2</div>
+    <div class="col-2">col-2</div>
+    <div class="col-2">col-2</div>
+    <div class="col-2">col-2</div>
+    <div class="col-2">col-2</div>
+  </div>
+</div><br/>
+<div class="container">
+  <div class="row row--flex">
+    <div class="col-3">col-3</div>
+    <div class="col-3">col-3</div>
+    <div class="col-3">col-3</div>
+    <div class="col-3">col-3</div>
+  </div>
+</div><br/>
+<h2>flex nested</h2><br/>
+<div class="container">
+  <div class="row row--flex">
+    <div class="col-6">col-6
+      <div class="row row--flex">
+        <div class="col-4">col-4</div>
+        <div class="col-8">col-8</div>
+      </div>
+    </div>
+    <div class="col-6">col-6</div>
+  </div>
+</div><br/>
+<h2>flex with breakpoints</h2>
+<div class="container">
+  <div class="row row--flex">
+    <div class="col-6 col-sm-2 col-md-5 col-lg-10">col</div>
+    <div class="col-6 col-sm-10 col-md-7 col-lg-2">col</div>
+  </div>
+</div>
+<h2>Custom markup (sass only)</h2>
+<div class="sitewrap">
+  <div class="row">
+    <div class="test1">tester1</div>
+    <div class="test2">tester2</div>
+  </div>
+</div>
+    
+    
+    
+    
+    
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "calcgrid",
+  "version": "0.0.0",
+  "homepage": "https://github.com/alanbrowndesign/calcgrid",
+  "authors": [
+    "Alan Brown <me@alanbrowndesign.co.uk>"
+  ],
+  "description": "A sass grid system using calc()",
+  "main": "src/calcgrid.sass",
+  "keywords": [
+    "grid",
+    "sass",
+    "calc",
+    "css",
+    "framework",
+    "grid",
+    "system"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alanbrowndesign/calcgrid.git"
+  }
+}

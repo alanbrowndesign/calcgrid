@@ -1,0 +1,120 @@
+html 
+  box-sizing: border-box
+
+*, *:before, *:after 
+  box-sizing: inherit
+
+
+
+// ******************************
+//        GRID VARIABLES
+
+$generate-grid-classes: true !default
+$breakpoints: (xs:0, sm:568, md:768, lg:992, xl:1200)
+$columns: 12 !default
+$gutter: 2.5rem !default
+
+
+
+// ******************************
+//          FUNCTIONS
+
+@function col-width($cols)
+  @return calc(#{99.99% * $cols / $columns} - #{$gutter})
+
+@function col-gutter($gutters:1)
+  @return $gutter*$gutters
+
+
+
+// ******************************
+//           MIXINS
+
+=clearfix
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+=container
+  padding-left: $gutter/2
+  padding-right: $gutter/2
+
+=row
+  @include clearfix
+  margin-left: -#{$gutter/2}
+  margin-right: -#{$gutter/2}
+
+=col($cols)
+  float: left
+  margin: 0 $gutter/2
+  width: col-width($cols)
+
+=gutter
+  margin: 0 $gutter/2
+
+=push($cols)
+  margin-left: calc(#{99.99% * $cols / $columns} + #{$gutter/2})
+
+=pull($cols)
+  margin-left: calc(-#{99.99% * $cols / $columns} + #{$gutter/2})
+
+
+
+// ******************************
+//       GENERATE CLASSES
+
+@if $generate-grid-classes
+  .container
+    +container
+  
+  .row
+    +row
+      
+  [class^="col-"],[class*=" col-"]
+    float: left
+    @include gutter
+  
+  .col
+    @each $breakpoint, $viewport in $breakpoints
+      $key: nth($breakpoint, 1)
+      @if $key == xs
+        @for $i from 1 through $columns
+          &-#{$i}
+            width: col-width($i)
+          
+          &-push-#{$i} 
+            +push($i)
+          
+          &-pull-#{$i}
+            margin-left: calc(-#{99.99% * $i / $columns} + #{$gutter/2})
+      
+      @else
+        @media (min-width:$viewport  / 16 * 1em)
+          @for $i from 1 through $columns
+            &-#{$key}
+              &-#{$i}
+                width: col-width($i)
+              
+              &-push-0
+                margin-left: $gutter/2
+              
+              &-push-#{$i}
+                +push($i)
+              
+              &-pull-#{$i}
+                margin-left: calc(-#{99.99% * $i / $columns} + #{$gutter/2})
+
+          
+// ******************************
+//             FLEX
+
+.row.row--flex
+  display: flex
+  flex: 0 1 auto
+  flex-direction: row
+  flex-wrap: wrap
+  
+  [class^="col-"],[class*=" col-"]
+    float: none
+    flex: 0 0 auto
