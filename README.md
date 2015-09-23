@@ -1,4 +1,4 @@
 # calcgrid
 A sass based grid system using calc()
 
-hw()
+http://codepen.io/alanbrown/pen/MwOxBL
